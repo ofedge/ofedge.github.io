@@ -4,20 +4,93 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LIST!</title>
-<style>
-p {line-height: 30px; height: 30px; font-family: 'Arial';}
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.9/vuetify.min.css" integrity="sha512-6UDKqsWLvwAjkzDqgeinvBHFpFlZX8p+ieD888ABcHvAJN6krX0dWSPxld10mGhtR/3yMv+2p7J5Y4HyZ7CBkQ==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.7.55/css/materialdesignicons.min.css" integrity="sha512-Yy8l8Uirb3w3G8SP+l7UwwzxRhZsGkmAqN7TFG6MT5nZi1VOkpo+hg3OrEl66fngrGAeL8LlUEoXfT6fRina6g==" crossorigin="anonymous" />
+<title>Home page</title>
 </head>
 <body>
-    <div>
-       <p><a href="https://zhtw.app/canvas/breakout/">BREAKOUT</a>, REFER: https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript</p> 
-       <p><a href="https://zhtw.app/canvas/mc/circle.html">CIRCLE</a></p>
-       <p><a href="https://zhtw.app/canvas/simple_canvas_game/">SIMPLE CANVAS GAME</a>, REFER: http://blog.csdn.net/antineutrino/article/details/10913783</p>
-       <p><a href="https://zhtw.app/canvas/clock.html">CLOCK</a></p>
-       <p><a href="https://zhtw.app/canvas/startup_sequence/">STARTUP SEQUENCE</a></p>
-       <p><a href="https://zhtw.app/canvas/2048/">2048</a></p>
-       <p><a href="https://zhtw.app/canvas/tetris/">TETRIS</a></p?
-    </div>
+  <div id="app">
+    <v-app id="homeapp">
+      <v-app-bar color="teal darken-2" dark app>
+        <v-toolbar-title>Canvas Demo</v-toolbar-title>
+      </v-app-bar>
+      <v-main>
+        <v-container>
+          <v-row>
+            <template v-for='item in items'>
+              <v-col cols="12" sm="6" md="4">
+                <v-card>
+                  <v-card-title>{{ item.name }}</v-card-title>
+                  <v-card-text>
+                    <div>{{ item.info }}</div>
+                    <a v-if="item.refer" :href="item.refer">{{ item.referTitle }}</a>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn fab small color="teal" dark :href='item.code'>
+                      <v-icon>mdi-code-tags</v-icon>
+                    </v-btn>
+                    <v-btn fab small color="primary" :href='item.link'>
+                      <v-icon>mdi-open-in-new</v-icon>
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-col>
+            </template>
+          </v-row>
+        </v-container>
+      </v-main>
+    </v-app>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js" integrity="sha512-BKbSR+cfyxLdMAsE0naLReFSLg8/pjbgfxHh/k/kUC82Hy7r6HtR5hLhobaln2gcTvzkyyehrdREdjpsQwy2Jw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.9/vuetify.min.js" integrity="sha512-ptCG56GRDugFJ3ZZixYq1mv2sie8cD/2CyElyZwAwmR+wjRTZuVwwFowH3TVn7+KWpvt8jnjGRx/OaqAs5QnvQ==" crossorigin="anonymous"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: {
+        items: [{
+          name: 'Breakout',
+          info: '使用纯JavaScript开发的2D打砖块游戏',
+          referTitle: '2D breakout game using pure JavaScript',
+          refer: 'https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript',
+          code: 'https://github.com/ofedge/canvas/tree/master/breakout',
+          link: 'https://zhtw.app/canvas/breakout/'
+        }, {
+          name: 'Circle',
+          info: '如何用正方形堆砌圆形',
+          code: 'https://github.com/ofedge/canvas/tree/master/mc',
+          link: 'https://zhtw.app/canvas/mc/circle.html'
+        }, {
+          name: 'Simple Canvas Game',
+          info: '简单的Canvas 游戏, 参考网上教程制作',
+          referTitle: '怎样用HTML5 Canvas制作一个简单的游戏',
+          refer: 'http://blog.csdn.net/antineutrino/article/details/10913783',
+          code: 'https://github.com/ofedge/canvas/tree/master/simple_canvas_game',
+          link: 'https://zhtw.app/canvas/simple_canvas_game/'
+        }, {
+          name: 'Clock',
+          info: 'Canvas绘制的时钟',
+          code: 'https://github.com/ofedge/canvas/blob/master/clock.html',
+          link: 'https://zhtw.app/canvas/clock.html'
+        }, {
+          name: 'Startup Sequence',
+          info: '魔兽世界军团再临世界任务: "守望者地库: 启动序列"的模拟版',
+          code: 'https://github.com/ofedge/canvas/tree/master/startup_sequence',
+          link: 'https://zhtw.app/canvas/startup_sequence/'
+        }, {
+          name: '2048',
+          info: '2048游戏',
+          code: 'https://github.com/ofedge/canvas/tree/master/2048',
+          link: 'https://zhtw.app/canvas/2048/'
+        }, {
+          name: 'Tetris',
+          info: '俄罗斯方块游戏',
+          code: 'https://github.com/ofedge/canvas/tree/master/tetris',
+          link: 'https://zhtw.app/canvas/tetris/'
+        }]
+      }
+    });
+  </script>
 </body>
 </html>
