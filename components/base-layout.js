@@ -7,7 +7,7 @@ Vue.component('base-layout', {
           <span class="title">Ofedge Github</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-items class="mr-3">
+        <v-toolbar-items>
           <v-btn text :href="githubUrl">
             <v-icon>mdi-github</v-icon>
           </v-btn>
