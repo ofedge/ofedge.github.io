@@ -38,6 +38,10 @@ Vue.component('base-layout', {
         name: 'Canvas练习',
         icon: 'mdi-gamepad',
         to: '/canvas'
+      }, {
+        name: 'JQuery插件',
+        icon: 'mdi-layers',
+        to: '/jquery'
       }]
     }
   }
